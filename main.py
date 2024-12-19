@@ -152,9 +152,8 @@ if live_stock_data is not None:
 
     # Display the closing price on the end date
     end_date_price = live_stock_data['Close'].iloc[-1]
+    end_date_price = end_date_price.values[0]
     st.write(f"Closing Price on {end_date}: {end_date_price:.2f}")
-
-
 
 # Display the charts
 st.plotly_chart(fig_nifty50)
@@ -486,12 +485,12 @@ def find_optimal_clusters(data, max_clusters=10):
     return optimal_clusters, fig
 
 def load_data():
-    sector_closing_data = pd.read_csv(r'C:\Users\Aditya Agarwal\OneDrive\Desktop\Semester\Semester-5\Data Science in Financial Markets\dashboard\close_price.csv', parse_dates=['Date'])
+    sector_closing_data = pd.read_csv(r'C:\backup\Semester\Semester-5\Data Science in Financial Markets\dashboard\close_price.csv', parse_dates=['Date'])
     sector_closing_data.set_index('Date', inplace=True)
     return sector_closing_data
 
 def load_log_returns():
-    sector_log_returns = pd.read_csv(r'C:\Users\Aditya Agarwal\OneDrive\Desktop\Semester\Semester-5\Data Science in Financial Markets\dashboard\log_returns.csv', parse_dates=['Date'])
+    sector_log_returns = pd.read_csv(r'C:\backup\Semester\Semester-5\Data Science in Financial Markets\dashboard\log_returns.csv', parse_dates=['Date'])
     sector_log_returns.set_index('Date', inplace=True)
     return sector_log_returns
 
